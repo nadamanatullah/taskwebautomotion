@@ -1,0 +1,13 @@
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\Main.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\object_repository\CartObjectRepository.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\object_repository\CheckoutInformationObjectRepository.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\object_repository\CheckoutOverviewObjectRepository.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\object_repository\ConfirmationObjectRepository.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\object_repository\DashboardObjectRepository.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\object_repository\LoginObjectRepository.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\pages\CartPage.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\pages\CheckoutInformationPage.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\pages\CheckoutOverviewPage.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\pages\ConfirmationPage.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\pages\DashboardPage.java
+D:\QA\taskwebautomation\src\main\java\com\webautomotion\page_factory\pages\LoginPage.java

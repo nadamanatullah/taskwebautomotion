@@ -1,0 +1,13 @@
+com\webautomotion\page_factory\pages\ConfirmationPage.class
+com\webautomotion\page_factory\pages\LoginPage.class
+com\webautomotion\page_factory\object_repository\CartObjectRepository.class
+com\webautomotion\page_factory\object_repository\CheckoutOverviewObjectRepository.class
+com\webautomotion\page_factory\pages\DashboardPage.class
+com\webautomotion\page_factory\object_repository\ConfirmationObjectRepository.class
+com\webautomotion\page_factory\pages\CartPage.class
+com\webautomotion\page_factory\pages\CheckoutOverviewPage.class
+com\webautomotion\page_factory\pages\CheckoutInformationPage.class
+com\webautomotion\page_factory\object_repository\CheckoutInformationObjectRepository.class
+com\webautomotion\page_factory\object_repository\DashboardObjectRepository.class
+com\webautomotion\page_factory\object_repository\LoginObjectRepository.class
+com\webautomotion\Main.class

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="32.06" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-10T02:15:43.643501800Z">
+<testcase classname="Checkout Scenario" name="User can checkout product successfuly" time="31.631">
+<system-out><![CDATA[
+Given User is on the login page.............................................passed
+When User logged in with valid credentials..................................passed
+Then User is navigated to the product page..................................passed
+When User adds a product to the cart........................................passed
+And User clicks on the cart icon............................................passed
+Then User verify the product is added to cart...............................passed
+When User clicks on the checkout button.....................................passed
+Then User is navigated to the checkout page.................................passed
+When User fills in the checkout information with valid data.................passed
+Then User verify the selected product in the overview list..................passed
+When User clicks on the finish button.......................................passed
+Then User should see the order confirmation page............................passed
+]]></system-out>
+</testcase>
+</testsuite>

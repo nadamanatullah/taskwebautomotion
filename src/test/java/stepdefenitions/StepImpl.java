@@ -1,10 +1,13 @@
 package stepdefenitions;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver.When;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
 import com.webautomotion.page_factory.pages.CartPage;
@@ -17,6 +20,7 @@ import com.webautomotion.page_factory.pages.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class StepImpl {
 
@@ -24,16 +28,37 @@ public class StepImpl {
 
     @Given ("User is on the login page")
     public void user_is_on_the_login_page() throws InterruptedException{
+
         System.out.println("Set Up Web Driver");
-        System.setProperty("webdriver.chrome.driver", "D:\\QA\\chromedriver-win64\\chromedriver.exe");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+
+        // Disable password leak detection popup
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.password_manager_leak_detection", false);
+        options.setExperimentalOption("prefs", prefs);
+        System.setProperty("webdriver.chrome.driver", "D:\\\\QA\\\\chromedriver-win64\\\\chromedriver.exe");
+
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Thread.sleep(3000);
+
+        // System.out.println("Set Up Web Driver");
+        // System.setProperty("webdriver.chrome.driver", "D:\\QA\\chromedriver-win64\\chromedriver.exe");
+        // ChromeOptions options = new ChromeOptions();
+        // Map<String, Object> prefs = new HashMap<>();
+        // prefs.put("profile_password_manager_leak_detection",false);
+        // options.setExperimentalOption("prefs", prefs);
+        
+        // driver = new ChromeDriver();
+        // driver.manage().window().maximize();
+        // driver.get("https://www.saucedemo.com/");
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        // Thread.sleep(3000);
     }
 
-    @io.cucumber.java.en.When("User logged in with valid credentials")
+    @When("User logged in with valid credentials")
     public void user_logged_in_with_valid_credentials() throws InterruptedException{
         System.out.println("1. Login ke Aplikasi");
         LoginPage loginPage = new LoginPage(driver);
@@ -44,11 +69,11 @@ public class StepImpl {
 
     @Then ("User is navigated to the product page")
     public void user_is_navigated_to_the_product_page(){
-        throw new io.cucumber.java.PendingException();
+        Assert.assertEquals("Products",driver.findElement(By.xpath("//span[@data-test='title']")).getText());
 
     }
 
-    @io.cucumber.java.en.When("User adds a product to the cart")
+    @When("User adds a product to the cart")
     public void user_adds_a_product_to_the_cart() throws InterruptedException{
         System.out.println("2. Add product to chart");
         DashboardPage dashboardPage =new DashboardPage(driver);
@@ -74,7 +99,7 @@ public class StepImpl {
 
     }
     //     When User clicks on the checkout button 
-    @io.cucumber.java.en.When("User clicks on the checkout button")
+    @When("User clicks on the checkout button")
     public void user_clicks_on_the_checkout_button() throws InterruptedException{
          CartPage cartPage =new CartPage(driver);
          cartPage.goToCheckout();
@@ -85,12 +110,11 @@ public class StepImpl {
     //     Then User is navigated to the checkout page
     @Then("User is navigated to the checkout page")
     public void user_is_navigated_to_checkout_page(){
-          throw new io.cucumber.java.PendingException();
-
+           Assert.assertEquals("Checkout: Your Information",driver.findElement(By.xpath("//span[@data-test='title']")).getText());
 
     }
     //     When User fills in the checkout information with valid data
-    @io.cucumber.java.en.When("User fills in the checkout information with valid data")
+    @When("User fills in the checkout information with valid data")
     public void user_fills_in_the_chechkout_information_with_valid_data() throws InterruptedException{
         CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage(driver);
         checkoutInformationPage.doContinue("Nada", "Amanatullah", "132435");
@@ -110,7 +134,7 @@ public class StepImpl {
 
     }
     //     When User clicks on the finish button 
-    @io.cucumber.java.en.When ("User clicks on the finish button")
+    @When ("User clicks on the finish button")
     public void user_clicks_on_the_finish_button(){
         CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(driver);
         checkoutOverviewPage.goToFinish();

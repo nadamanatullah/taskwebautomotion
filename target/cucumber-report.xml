@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="32.06" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-10T02:15:43.643501800Z">
-<testcase classname="Checkout Scenario" name="User can checkout product successfuly" time="31.631">
+<testsuite name="Cucumber" time="93.193" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-10-11T12:43:08.859667700Z">
+<testcase classname="Checkout Scenario" name="User can checkout product some variant successfuly - #1.1" time="31.583">
 <system-out><![CDATA[
 Given User is on the login page.............................................passed
-When User logged in with valid credentials..................................passed
+When User logged in with "standard_user" and "secret_sauce".................passed
 Then User is navigated to the product page..................................passed
-When User adds a product to the cart........................................passed
+When User adds a product to the cart "Sauce Labs Backpack"..................passed
 And User clicks on the cart icon............................................passed
-Then User verify the product is added to cart...............................passed
+Then User verify the product is added to cart "Sauce Labs Backpack".........passed
 When User clicks on the checkout button.....................................passed
 Then User is navigated to the checkout page.................................passed
 When User fills in the checkout information with valid data.................passed
-Then User verify the selected product in the overview list..................passed
+Then User verify the selected product in the overview list "Sauce Labs Backpack".passed
+When User clicks on the finish button.......................................passed
+Then User should see the order confirmation page............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Checkout Scenario" name="User can checkout product some variant successfuly - #1.2" time="30.47">
+<system-out><![CDATA[
+Given User is on the login page.............................................passed
+When User logged in with "standard_user" and "secret_sauce".................passed
+Then User is navigated to the product page..................................passed
+When User adds a product to the cart "Sauce Labs Bike Light"................passed
+And User clicks on the cart icon............................................passed
+Then User verify the product is added to cart "Sauce Labs Bike Light".......passed
+When User clicks on the checkout button.....................................passed
+Then User is navigated to the checkout page.................................passed
+When User fills in the checkout information with valid data.................passed
+Then User verify the selected product in the overview list "Sauce Labs Bike Light".passed
+When User clicks on the finish button.......................................passed
+Then User should see the order confirmation page............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Checkout Scenario" name="User can checkout product some variant successfuly - #1.3" time="30.719">
+<system-out><![CDATA[
+Given User is on the login page.............................................passed
+When User logged in with "standard_user" and "secret_sauce".................passed
+Then User is navigated to the product page..................................passed
+When User adds a product to the cart "Sauce Labs Bolt T-Shirt"..............passed
+And User clicks on the cart icon............................................passed
+Then User verify the product is added to cart "Sauce Labs Bolt T-Shirt".....passed
+When User clicks on the checkout button.....................................passed
+Then User is navigated to the checkout page.................................passed
+When User fills in the checkout information with valid data.................passed
+Then User verify the selected product in the overview list "Sauce Labs Bolt T-Shirt".passed
 When User clicks on the finish button.......................................passed
 Then User should see the order confirmation page............................passed
 ]]></system-out>

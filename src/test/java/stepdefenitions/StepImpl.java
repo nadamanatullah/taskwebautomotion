@@ -21,6 +21,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.lu.an;
 
 public class StepImpl {
 
@@ -58,14 +59,22 @@ public class StepImpl {
         // Thread.sleep(3000);
     }
 
-    @When("User logged in with valid credentials")
-    public void user_logged_in_with_valid_credentials() throws InterruptedException{
-        System.out.println("1. Login ke Aplikasi");
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.doLogin("standard_user", "secret_sauce");
-        Thread.sleep(3000);
-    }
+    // @When("User logged in with valid credentials")
+    // public void user_logged_in_with_valid_credentials() throws InterruptedException{
+    //     System.out.println("1. Login ke Aplikasi");
+    //     LoginPage loginPage = new LoginPage(driver);
+    //     loginPage.doLogin("standard_user", "secret_sauce");
+    //     Thread.sleep(3000);
+    // }
     
+    //When User logged in with "<username>" and "<password>"
+    @When("User logged in with {string} and {string}")
+    public void user_logged_in_with(String username, String password) throws InterruptedException{
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.doLogin(username, password);
+
+         Thread.sleep(3000);
+    }
 
     @Then ("User is navigated to the product page")
     public void user_is_navigated_to_the_product_page(){
@@ -73,14 +82,20 @@ public class StepImpl {
 
     }
 
-    @When("User adds a product to the cart")
-    public void user_adds_a_product_to_the_cart() throws InterruptedException{
+    // @When("User adds a product to the cart")
+    // public void user_adds_a_product_to_the_cart() throws InterruptedException{
+    //     System.out.println("2. Add product to chart");
+    //     DashboardPage dashboardPage =new DashboardPage(driver);
+    //     dashboardPage.addToChart("Sauce Labs Backpack");
+    //     Thread.sleep(3000);
+    // }
+    @When("User adds a product to the cart {string}")
+    public void user_adds_a_product_to_the_cart(String productName) throws InterruptedException{
         System.out.println("2. Add product to chart");
         DashboardPage dashboardPage =new DashboardPage(driver);
-        dashboardPage.addToChart("Sauce Labs Backpack");
+        dashboardPage.addToChart(productName);
         Thread.sleep(3000);
     }
-
     @And("User clicks on the cart icon")
     public void user_clicks_on_the_cart_icon() throws InterruptedException{
         CartPage cartPage =new CartPage(driver);
@@ -89,14 +104,21 @@ public class StepImpl {
 
     }
     //Then User verify the product is added to cart
-    @Then ("User verify the product is added to cart")
-    public void user_verify_the_product_is_added_to_cart() throws InterruptedException{
+    // @Then ("User verify the product is added to cart")
+    // public void user_verify_the_product_is_added_to_cart() throws InterruptedException{
+    //     CartPage cartPage =new CartPage(driver);
+    //     Boolean match = cartPage.verifyProductInCart("Sauce Labs Backpack");
+    //     Assert.assertTrue(match);
+
+    //     Thread.sleep(3000);
+    // }
+     @Then ("User verify the product is added to cart {string}")
+    public void user_verify_the_product_is_added_to_cart(String productName) throws InterruptedException{
         CartPage cartPage =new CartPage(driver);
-        Boolean match = cartPage.verifyProductInCart("Sauce Labs Backpack");
+        Boolean match = cartPage.verifyProductInCart(productName);
         Assert.assertTrue(match);
 
         Thread.sleep(3000);
-
     }
     //     When User clicks on the checkout button 
     @When("User clicks on the checkout button")
@@ -122,12 +144,22 @@ public class StepImpl {
         Thread.sleep(3000);
     }
    
-    //     Then User verify the selected product in the overview list
-    @Then ("User verify the selected product in the overview list")
-    public void user_verify_the_selected_product_in_the_overview_list() throws InterruptedException{
+    //Then User verify the selected product in the overview list
+    // @Then ("User verify the selected product in the overview list")
+    // public void user_verify_the_selected_product_in_the_overview_list() throws InterruptedException{
+    //      System.out.println("5.Overview Product Checkout");
+    //     CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(driver);
+    //     Boolean matchOverview = checkoutOverviewPage.verifyOverviewProduct("Sauce Labs Backpack");
+    //     Assert.assertTrue(matchOverview);
+
+    //      Thread.sleep(3000);
+
+    // }
+    @Then ("User verify the selected product in the overview list {string}")
+    public void user_verify_the_selected_product_in_the_overview_list(String productName) throws InterruptedException{
          System.out.println("5.Overview Product Checkout");
         CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(driver);
-        Boolean matchOverview = checkoutOverviewPage.verifyOverviewProduct("Sauce Labs Backpack");
+        Boolean matchOverview = checkoutOverviewPage.verifyOverviewProduct(productName);
         Assert.assertTrue(matchOverview);
 
          Thread.sleep(3000);
@@ -151,7 +183,13 @@ public class StepImpl {
 
         Thread.sleep(3000);
     }
-   
+
+    //Then User should see an error message
+    @Then("User should see an error message")
+    public void user_should_see_an_error_message(){
+        System.out.println("See error message");
+        //Assert.assertEquals("Epic sadface: Username and password do not match any user in this service",driver.findElement(By.xpath("//h3[@data-test='error']")).getText());
+    }
 
 
 
